@@ -1,0 +1,255 @@
+*
+{
+    margin: 0;
+    /* outline: 1px solid black; */
+    padding: 0;
+    list-style: none;
+}
+
+.page
+{
+    width: 50%;
+    height: 100vh;
+    border: 1px solid black;
+}
+
+.render
+{
+    width: 50%;
+    border: 1px solid red;
+}
+
+.head
+{
+    width: calc(100%-60px);
+    min-height: 70px;
+    height: auto;
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+
+}
+
+
+.head .logo
+{
+    border-radius: 10px;
+    width: 70px;
+    outline: 1px solid black;
+}
+
+.head .center
+{
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+    outline: 1px solid black;
+    padding: 10px;
+}
+
+.head .datas
+{
+    width: 20%;
+    border-radius: 10px;
+    outline: 1px solid black;
+}
+
+.editor
+{
+    width: calc(100% - 60px);
+    height: calc(100vh - 210px);
+    margin: 30px;
+    overflow-y: scroll;
+    padding: 10px;
+    /* outline: 1px solid black; */
+}
+
+.editor p
+{
+
+    min-width: 30%;
+    max-width: calc(100% - 20px);
+    width: content;
+    padding: 10px;
+    margin-bottom: 10px;
+    outline: 1px solid black;
+    border-radius: 10px;
+    font-family: tahoma;
+    text-align: justify;
+}
+
+.editor p:hover
+{
+    outline: 1px solid grey;
+}
+
+.p
+{
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.h1
+{
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.h2
+{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.h3
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.quotes
+{
+    font-size: 20px;
+    color: white;
+    font-style: italic;
+    background-color: rgb(197, 197, 197);
+}
+
+.code
+{
+    
+    background-color: rgba(0, 0, 0, 0.613);
+    font-size: 18px;
+    color: white;
+    font-style: italic;
+}
+
+.link
+{
+    font-size: 18px;
+    color: blue;
+    font-style: italic;
+}
+
+.image
+{
+    font-size: 18px;
+    color: blue;
+    font-style: italic;
+}
+
+::-webkit-scrollbar
+{
+    width: 0;
+    background: transparent;
+}
+
+.center button
+{
+    width: 40px;
+    height: 40px;
+    margin-left: 1.5%;
+    margin-right: 1%;
+    margin-top: 5px;
+    background-color: white;
+}
+
+body
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.run
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 25px);
+    background-image: url("../Images/Ressources/start.svg");
+    background-color: yellow;
+    background-position: center;
+    background-size: contain;
+    border-radius: 10px;
+    left: calc(50% - 25px);
+}
+
+.new
+{
+    width: 30px;
+    border-radius: 10px;
+    height: 30px;
+    position: relative;
+    bottom: 10px;
+    left: calc(50% - 25px);
+    background-image: url("../Images/Ressources/new.svg");
+    background-color: rgb(55, 255, 0);
+    background-position: center;
+    background-size: contain;
+}
+
+.run:active
+{
+    border: 3px inset black;
+}
+
+body
+{
+    background: rgb(240, 240, 240);
+}
+
+.render
+{
+    overflow-y: scroll;
+    padding: 10px;
+    width: 50%;
+    height: 100vh;
+    /* outline: 1px solid black; */
+}
+
+.render p
+{
+    width: calc(100% - 20px);
+    justify-content: justify;
+    overflow: hidden;
+    padding: 10px;
+    margin-bottom: 10px;
+    /* outline: 1px solid black; */
+    border-radius: 10px;
+    font-family: tahoma;
+    text-align: justify;
+}
+
+.render img
+{
+    width: 100%;
+}
+
+@media only screen and (max-width : 700px) 
+{
+    body
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .run
+    {
+        top: calc(100vh - 10px);
+    }
+
+    .page
+    {
+        width: 100%;
+    }
+    .render
+    {
+        position: relative;
+        width: calc(100% - 20px);
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+
+}

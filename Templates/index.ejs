@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+        <div class="head">
+            <center class="center">
+                <button><img src="../Images/Ressources/H1.png" width='100%' onclick="newelement('h1')"></button>
+                <button><img src="../Images/Ressources/H2.png" width='100%' onclick="newelement('h2')"></button>
+                <button><img src="../Images/Ressources/H3.png" width='100%' onclick="newelement('h2')"></button>
+                <button><img src="../Images/Ressources/P.png" width='100%' onclick="newelement('p')"></button>
+                <button><img src="../Images/Ressources/link.png" width='100%' onclick="newelement('link')"></button>
+                <button><img src="../Images/Ressources/quotes.png" width='100%' onclick="newelement('quotes')"></button>
+                <button><img src="../Images/Ressources/code.svg" width='100%' onclick="newelement('code')"></button>
+                <button><img src="../Images/Ressources/background.png" width='100%' onclick="newelement('image')"></button>
+            </center>
+        </div>
+
+        <div class="editor">
+            
+        </div>
+
+    </div>
+
+
+    <div class="render">
+    </div>
+
+    
+
+    <button class="run" onclick="preview()">
+
+    </button>
+    
+    
+</body>
+
+
+<script>
+
+    function kill_childs()
+    {
+        var malist = document.getElementsByClassName("render")[0].childNodes;
+        var parent = document.getElementsByClassName("render")[0];
+        var longueur = malist.length;
+        while (longueur!=0)
+        {
+            parent.removeChild(malist[0]);
+            longueur-=1;
+        }
+
+    }
+
+    function preview()
+    {
+        var list = document.getElementsByClassName("text");
+        var i = 0;
+        var page = document.getElementsByClassName("render")[0];
+        kill_childs();
+        var newel;
+        while (i<list.length)
+        {
+            if (list[i].getAttribute('class').substring(5, list[i].getAttribute('class').length) == "link")
+            {
+                newel = document.createElement("a");
+                newel.setAttribute("href", list[i].innerHTML);
+                newel.setAttribute("target", "_blank");
+                newel.innerHTML = list[i].innerHTML;
+            }
+            else
+            {   
+                if (list[i].getAttribute("class").substring(5, list[i].getAttribute('class').length) == "image")
+                {
+                    newel = document.createElement("img");
+                    newel.setAttribute("src", list[i].innerHTML);
+                    newel.setAttribute("width", "100%");
+                    newel.setAttribute("height", "auto");
+                }
+                else
+                {
+                    newel = document.createElement("p");
+                    newel.innerHTML = list[i].innerHTML;
+                }
+            }
+            newel.setAttribute("class", "back "+list[i].getAttribute('class').substring(5, list[i].getAttribute('class').length));
+            newel.setAttribute("contenteditable", "false");
+            page.appendChild(newel);
+            i = i+1;
+        }
+
+        
+    }
+
+    function newelement(type)
+    {
+        let page = document.getElementsByClassName("editor")[0];
+        let newel = document.createElement("p");
+        newel.setAttribute("class", "text "+type);
+        newel.setAttribute("contenteditable", "true");
+        page.appendChild(newel);
+    }
+
+    
+
+</script>
+
+</html>
