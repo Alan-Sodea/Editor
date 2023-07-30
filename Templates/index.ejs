@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+
+    
+
     <div class="page">
         <div class="head">
             <center class="center">
@@ -18,6 +21,20 @@
                 <button><img src="../Images/Ressources/quotes.png" width='100%' onclick="newelement('quotes')"></button>
                 <button><img src="../Images/Ressources/code.svg" width='100%' onclick="newelement('code')"></button>
                 <button><img src="../Images/Ressources/background.png" width='100%' onclick="newelement('image')"></button>
+                <input type="checkbox" id="click">
+                <label id="save" for="click"></label>
+                
+                <div class="voile">
+
+                </div>
+
+                
+            
+                <form action="" class="save-form">
+                    <input type="text" placeholder="File's name">
+                    <input type="text" placeholder="password">
+                    <center><input type="button" value="Submit"></center>
+                </form>
             </center>
         </div>
 
@@ -71,6 +88,7 @@
                 newel.setAttribute("href", list[i].innerHTML);
                 newel.setAttribute("target", "_blank");
                 newel.innerHTML = list[i].innerHTML;
+                newel.style.fontSize = "20px";
             }
             else
             {   

@@ -4,6 +4,8 @@
     /* outline: 1px solid black; */
     padding: 0;
     list-style: none;
+    text-decoration: none;
+
 }
 
 .page
@@ -30,7 +32,6 @@
     border-radius: 10px;
 
 }
-
 
 .head .logo
 {
@@ -67,10 +68,7 @@
 
 .editor p
 {
-
-    min-width: 30%;
-    max-width: calc(100% - 20px);
-    width: content;
+    width: calc(100% - 50px);
     padding: 10px;
     margin-bottom: 10px;
     outline: 1px solid black;
@@ -166,13 +164,113 @@ body
     position: absolute;
     width: 50px;
     height: 50px;
-    top: calc(50% - 25px);
+    top: calc(50% + 30px);
     background-image: url("../Images/Ressources/start.svg");
     background-color: yellow;
     background-position: center;
     background-size: contain;
     border-radius: 10px;
-    left: calc(50% - 25px);
+    left: calc(50% - 37.5px);
+}
+
+input[type="checkbox"]
+{
+    display: none;
+}
+
+center #save
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 30px);
+    background-image: url("../Images/Ressources/save.svg");
+    background-color: greenyellow;
+    background-position: center;
+    background-size: contain;
+    border-radius: 10px;
+    left: calc(50% - 37.5px);
+
+    
+    outline: 2px solid black;
+}
+
+#click:checked + #save
+{
+    z-index: 7;
+    position: fixed;
+    left: calc(100% - 70px);
+    background-image: url("../Images/Ressources/close.svg");
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    margin: 10px;
+    border-radius: 30%;
+}
+
+.voile
+{
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.359);
+    transition: linear .25s;
+}
+
+#click:checked ~ .voile
+{
+    top: 0;
+    left: 0;
+    z-index: 6;
+}
+
+.exit:hover
+{
+    background-color: rgb(147, 3, 3);
+}
+
+#click:checked ~ .save-form
+{
+    top: calc(50% - 125px);
+    left: calc(50% - 250px);
+}
+
+.save-form
+{
+    z-index: 6;
+    position: fixed;
+    width: 440px;
+    box-shadow: 2px 2px 2px 2px;
+    border-radius: 5px;
+    height: 190px;
+    left: -500px;
+    top: calc(50% - 125px);
+    transition: linear 0.3s;
+    background-color: white;
+    padding: 30px;
+}
+
+.save-form input
+{
+    width: calc(100% - 30px);
+    font-size: 20px;
+    height: 30px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+input[type="button"]
+{
+    height: 50px;
+    width: 30%;
+    margin-bottom: 0;
+}
+
+center label:active
+{
+    outline: 1px inset black;
 }
 
 .new
@@ -204,7 +302,7 @@ body
     overflow-y: scroll;
     padding: 10px;
     width: 50%;
-    height: 100vh;
+    height: calc(100vh - 20px);
     /* outline: 1px solid black; */
 }
 
@@ -226,8 +324,16 @@ body
     width: 100%;
 }
 
+
+
 @media only screen and (max-width : 700px) 
 {
+    #save
+    {
+        top: calc(100vh - 25px);
+        left: calc(50% + 62.5px);
+    }
+
     body
     {
         display: flex;
@@ -236,8 +342,11 @@ body
 
     .run
     {
-        top: calc(100vh - 10px);
+        top: calc(100vh - 25px);
+        left: calc(50% - 62.5px);
     }
+
+    
 
     .page
     {
@@ -250,6 +359,13 @@ body
         padding-top: 100px;
         padding-bottom: 100px;
     }
+}
 
-
+@media only screen and (max-width : 500px) 
+{
+    #click:checked ~ .save-form
+    {
+        width: 79%;
+        left: 2%;
+    }
 }
