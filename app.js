@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-// const note = require("./Models/notes");
+const Note = require("./Models/notes");
 const bodyParser = require("body-parser");
 
 app.set("views", "./Templates");
@@ -9,6 +9,8 @@ app.set("view engine", "ejs");
 
 app.use(express.static("./Static"))
 app.use(bodyParser.urlencoded({ extended: false }));
+
+let load = [];
 
 app.get("/", (req, res) =>
 {

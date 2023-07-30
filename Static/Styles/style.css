@@ -213,6 +213,7 @@ center #save
 {
     position: fixed;
     top: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.359);
@@ -250,6 +251,11 @@ center #save
     transition: linear 0.3s;
     background-color: white;
     padding: 30px;
+    background-image: url("../Images/Ressources/back.jpeg");
+    background-image: linear-gradient(to bottom right, #009FFF, #ec2F4B);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .save-form input
@@ -261,11 +267,28 @@ center #save
     padding: 5px;
 }
 
+.save-form input[type="text"]
+{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: white;
+    
+    border-bottom: 1px solid black;
+}
+
+.save-form input[type="password"]
+{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 1px solid black;
+}
+
 input[type="button"]
 {
     height: 50px;
     width: 30%;
     margin-bottom: 0;
+    background-color: #00ffa639;
 }
 
 center label:active
@@ -368,4 +391,9 @@ body
         width: 79%;
         left: 2%;
     }
+}
+
+::placeholder
+{
+    color: rgba(225, 225, 225, 0.767);
 }

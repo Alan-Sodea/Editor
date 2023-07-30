@@ -30,10 +30,10 @@
 
                 
             
-                <form action="" class="save-form">
-                    <input type="text" placeholder="File's name">
-                    <input type="text" placeholder="password">
-                    <center><input type="button" value="Submit"></center>
+                <form class="save-form">
+                    <input type="text" placeholder="File's name" name="title">
+                    <input type="password" placeholder="password" name="password">
+                    <center><input type="button" onclick="save" value="Submit"></center>
                 </form>
             </center>
         </div>
@@ -121,6 +121,21 @@
         newel.setAttribute("class", "text "+type);
         newel.setAttribute("contenteditable", "true");
         page.appendChild(newel);
+    }
+
+    function save()
+    {
+        var tab = document.getElementsByClassName("text");
+        var mytypes = [];
+        var myvalues = []; 
+        var i = 0;
+        while (i<tab.length)
+        {
+            mytypes.push(tab[i].getAttribute("class").substring(5, list[i].getAttribute('class').length));
+            myvalues.push(tab[i].innerHTML);
+            i++;
+        }
+        console.log("")
     }
 
     
