@@ -31,15 +31,19 @@
                 
             
                 <form class="save-form">
-                    <input type="text" placeholder="File's name" name="title">
-                    <input type="password" placeholder="password" name="password">
-                    <center><input type="button" onclick="save" value="Submit"></center>
+                    <input type="text" placeholder="File's name" id="title">
+                    <input type="password" placeholder="password" id="password">
+                    <center><input type="button" onclick="save()" value="Submit"></center>
                 </form>
             </center>
         </div>
 
         <div class="editor">
-            
+            <p class="text p" contenteditable="true">Bonjour bro 
+                <div class="menu">
+
+                </div>
+            </p>
         </div>
 
     </div>
@@ -60,6 +64,7 @@
 
 <script>
 
+
     function kill_childs()
     {
         var malist = document.getElementsByClassName("render")[0].childNodes;
@@ -79,37 +84,44 @@
         var i = 0;
         var page = document.getElementsByClassName("render")[0];
         kill_childs();
-        var newel;
+        var mynewel;
         while (i<list.length)
         {
             if (list[i].getAttribute('class').substring(5, list[i].getAttribute('class').length) == "link")
             {
-                newel = document.createElement("a");
-                newel.setAttribute("href", list[i].innerHTML);
-                newel.setAttribute("target", "_blank");
-                newel.innerHTML = list[i].innerHTML;
-                newel.style.fontSize = "20px";
+                mynewel = document.createElement("a");
+                mynewel.setAttribute("href", list[i].innerHTML);
+                mynewel.setAttribute("target", "_blank");
+                mynewel.innerHTML = list[i].innerHTML;
+                mynewel.style.fontSize = "20px";
             }
             else
             {   
                 if (list[i].getAttribute("class").substring(5, list[i].getAttribute('class').length) == "image")
                 {
-                    newel = document.createElement("img");
-                    newel.setAttribute("src", list[i].innerHTML);
-                    newel.setAttribute("width", "100%");
-                    newel.setAttribute("height", "auto");
+                    mynewel = document.createElement("img");
+                    mynewel.setAttribute("src", list[i].innerHTML);
+                    mynewel.setAttribute("width", "100%");
+                    mynewel.setAttribute("height", "auto");
                 }
                 else
                 {
-                    newel = document.createElement("p");
-                    newel.innerHTML = list[i].innerHTML;
+                    mynewel = document.createElement("p");
+                    mynewel.innerHTML = list[i].innerHTML;
                 }
             }
-            newel.setAttribute("class", "back "+list[i].getAttribute('class').substring(5, list[i].getAttribute('class').length));
-            newel.setAttribute("contenteditable", "false");
-            page.appendChild(newel);
+            mynewel.setAttribute("class", "back "+list[i].getAttribute('class').substring(5, list[i].getAttribute('class').length));
+            mynewel.setAttribute("contenteditable", "false");
+            page.appendChild(mynewel);
             i = i+1;
         }
+        i = 0;
+        while (i<document.getElementsByClassName("back"))
+        {
+            
+            i++;
+        }
+            
 
         
     }
@@ -125,19 +137,41 @@
 
     function save()
     {
+        const fs = require("fs");
+        
         var tab = document.getElementsByClassName("text");
         var mytypes = [];
         var myvalues = []; 
         var i = 0;
         while (i<tab.length)
         {
-            mytypes.push(tab[i].getAttribute("class").substring(5, list[i].getAttribute('class').length));
+            mytypes.push(tab[i].getAttribute("class").substring(5, tab[i].getAttribute('class').length));
             myvalues.push(tab[i].innerHTML);
             i++;
         }
-        console.log("")
-    }
+        var j = {
+            title : document.getElementById("title").value,
+            password : document.getElementById("password").value,
+            types : mytypes,
+            values : myvalues
+        } 
 
+        const saved = JSON.stringify(j);
+        console.log(saved);
+
+        fs.writeFile("../Static/Data/"+title+".json", password, (err) =>
+        {
+            if (err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                console.log("Datas saved");
+            }
+        });
+
+    }
     
 
 </script>
